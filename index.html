@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Tutorial — Fecha, Hora y Nombre</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-tag">Tutorial Python</div>
+    <h1>Fecha, Hora<br/><em>y Nombre</em></h1>
+    <p class="hero-sub">Aprende paso a paso cómo crear tu primer programa en Python que captura el tiempo actual y saluda al usuario por su nombre.</p>
+    <div class="hero-meta">
+      <span>⏱ 10 min</span>
+      <span>·</span>
+      <span>🐍 Python 3.x</span>
+      <span>·</span>
+      <span>🟢 Principiante</span>
+    </div>
+    <a href="#paso-1" class="cta">Comenzar →</a>
+  </header>
+
+  <!-- REQUISITOS -->
+  <section class="requisitos">
+    <h2 class="section-label">Antes de empezar</h2>
+    <div class="req-grid">
+      <div class="req-card">
+        <span class="req-icon">🐍</span>
+        <strong>Python instalado</strong>
+        <p>Versión 3.6 o superior. Descárgalo en <a href="https://python.org" target="_blank">python.org</a></p>
+      </div>
+      <div class="req-card">
+        <span class="req-icon">📁</span>
+        <strong>Editor de código</strong>
+        <p>Visual Studio Code, PyCharm o cualquier editor de texto.</p>
+      </div>
+      <div class="req-card">
+        <span class="req-icon">💻</span>
+        <strong>Terminal</strong>
+        <p>CMD, PowerShell (Windows) o Terminal (Mac/Linux).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASOS -->
+  <main class="steps-container">
+
+    <!-- PASO 1 -->
+    <article class="step" id="paso-1">
+      <div class="step-number">01</div>
+      <div class="step-content">
+        <h2>Crea el archivo del proyecto</h2>
+        <p>Abre tu editor de código y crea un nuevo archivo. Guárdalo con el nombre <code>programa.py</code> en una carpeta de tu elección, por ejemplo <code>C:\MisProgramas\</code>.</p>
+        <div class="tip">
+          <span class="tip-label">💡 Tip</span>
+          La extensión <code>.py</code> le indica a tu sistema que es un script de Python.
+        </div>
+      </div>
+    </article>
+
+    <!-- PASO 2 -->
+    <article class="step" id="paso-2">
+      <div class="step-number">02</div>
+      <div class="step-content">
+        <h2>Importa el módulo <code>datetime</code></h2>
+        <p>Python incluye de forma nativa el módulo <code>datetime</code>, que nos permite trabajar con fechas y horas sin instalar nada extra.</p>
+        <p>Escribe esto al inicio de tu archivo <code>programa.py</code>:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-filename">programa.py</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+          </div>
+          <pre><code><span class="kw">from</span> datetime <span class="kw">import</span> datetime</code></pre>
+        </div>
+        <div class="explain">
+          <p><strong>¿Qué hace esto?</strong> Importa la clase <code>datetime</code> desde el módulo <code>datetime</code> de Python. Esta clase contiene los métodos para obtener la fecha y hora actual.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- PASO 3 -->
+    <article class="step" id="paso-3">
+      <div class="step-number">03</div>
+      <div class="step-content">
+        <h2>Obtén la fecha y hora actual</h2>
+        <p>Usa el método <code>.now()</code> para capturar el momento exacto en que se ejecuta el programa:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-filename">programa.py</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+          </div>
+          <pre><code><span class="kw">from</span> datetime <span class="kw">import</span> datetime
+
+ahora = datetime.now()
+<span class="fn">print</span>(<span class="str">"📅 Fecha actual:"</span>, ahora.strftime(<span class="str">"%d/%m/%Y"</span>))
+<span class="fn">print</span>(<span class="str">"🕐 Hora actual: "</span>, ahora.strftime(<span class="str">"%H:%M:%S"</span>))</code></pre>
+        </div>
+        <div class="explain">
+          <table class="explain-table">
+            <thead><tr><th>Código</th><th>Significado</th></tr></thead>
+            <tbody>
+              <tr><td><code>datetime.now()</code></td><td>Captura el instante actual del sistema.</td></tr>
+              <tr><td><code>strftime("%d/%m/%Y")</code></td><td>Formatea: día/mes/año (ej. 11/03/2026)</td></tr>
+              <tr><td><code>strftime("%H:%M:%S")</code></td><td>Formatea: hora:minutos:segundos (ej. 14:35:07)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+
+    <!-- PASO 4 -->
+    <article class="step" id="paso-4">
+      <div class="step-number">04</div>
+      <div class="step-content">
+        <h2>Pide el nombre al usuario</h2>
+        <p>Usamos la función nativa <code>input()</code> para solicitar datos al usuario desde la terminal. El texto ingresado se almacena en una variable:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-filename">programa.py</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+          </div>
+          <pre><code>nombre = <span class="fn">input</span>(<span class="str">"👤 ¿Cuál es tu nombre? "</span>)</code></pre>
+        </div>
+        <div class="tip">
+          <span class="tip-label">💡 Tip</span>
+          La variable <code>nombre</code> guarda en memoria lo que el usuario escriba. Puedes reutilizarla las veces que quieras dentro del programa.
+        </div>
+      </div>
+    </article>
+
+    <!-- PASO 5 -->
+    <article class="step" id="paso-5">
+      <div class="step-number">05</div>
+      <div class="step-content">
+        <h2>Guarda el nombre en un archivo <code>.txt</code></h2>
+        <p>Para guardar el nombre de forma permanente (que no se pierda al cerrar el programa), lo escribimos en un archivo de texto usando <code>open()</code>:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-filename">programa.py</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+          </div>
+          <pre><code><span class="kw">with</span> <span class="fn">open</span>(<span class="str">"usuario.txt"</span>, <span class="str">"w"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> archivo:
+    archivo.write(<span class="str">f"Nombre: </span>{nombre}<span class="str">\n"</span>)
+    archivo.write(<span class="str">f"Registrado el: </span>{ahora.strftime(<span class="str">"%d/%m/%Y a las %H:%M:%S"</span>)}<span class="str">\n"</span>)
+
+<span class="fn">print</span>(<span class="str">f"✅ ¡Hola, </span>{nombre}<span class="str">! Tu nombre fue guardado correctamente."</span>)</code></pre>
+        </div>
+        <div class="explain">
+          <table class="explain-table">
+            <thead><tr><th>Parámetro</th><th>Significado</th></tr></thead>
+            <tbody>
+              <tr><td><code>"usuario.txt"</code></td><td>Nombre del archivo a crear/sobreescribir.</td></tr>
+              <tr><td><code>"w"</code></td><td>Modo escritura. Crea el archivo si no existe.</td></tr>
+              <tr><td><code>encoding="utf-8"</code></td><td>Soporta tildes y caracteres especiales.</td></tr>
+              <tr><td><code>f"..."</code></td><td>f-string: permite insertar variables dentro del texto.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+
+    <!-- PASO 6 — CÓDIGO COMPLETO -->
+    <article class="step final-step" id="paso-6">
+      <div class="step-number">06</div>
+      <div class="step-content">
+        <h2>Código completo</h2>
+        <p>Este es el programa final con todo integrado. Cópialo en tu archivo <code>programa.py</code>:</p>
+        <div class="code-block code-final">
+          <div class="code-header">
+            <span class="code-filename">programa.py — Versión final ✅</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copiar todo</button>
+          </div>
+          <pre><code><span class="comment"># ─────────────────────────────────────
+# Programa: Fecha, Hora y Nombre
+# Autor: Tu Nombre
+# ─────────────────────────────────────</span>
+
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
+
+<span class="comment"># 1. Capturar fecha y hora actual</span>
+ahora = datetime.now()
+<span class="fn">print</span>(<span class="str">"📅 Fecha actual:"</span>, ahora.strftime(<span class="str">"%d/%m/%Y"</span>))
+<span class="fn">print</span>(<span class="str">"🕐 Hora actual: "</span>, ahora.strftime(<span class="str">"%H:%M:%S"</span>))
+<span class="fn">print</span>()
+
+<span class="comment"># 2. Solicitar nombre al usuario</span>
+nombre = <span class="fn">input</span>(<span class="str">"👤 ¿Cuál es tu nombre? "</span>)
+
+<span class="comment"># 3. Guardar nombre en archivo</span>
+<span class="kw">with</span> <span class="fn">open</span>(<span class="str">"usuario.txt"</span>, <span class="str">"w"</span>, encoding=<span class="str">"utf-8"</span>) <span class="kw">as</span> archivo:
+    archivo.write(<span class="str">f"Nombre: {nombre}\n"</span>)
+    archivo.write(<span class="str">f"Registrado el: {ahora.strftime('%d/%m/%Y a las %H:%M:%S')}\n"</span>)
+
+<span class="comment"># 4. Confirmar al usuario</span>
+<span class="fn">print</span>(<span class="str">f"\n✅ ¡Hola, {nombre}! Tu nombre fue guardado en 'usuario.txt'."</span>)</code></pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- PASO 7 — EJECUTAR -->
+    <article class="step" id="paso-7">
+      <div class="step-number">07</div>
+      <div class="step-content">
+        <h2>Ejecuta el programa</h2>
+        <p>Abre tu terminal, navega a la carpeta donde guardaste <code>programa.py</code> y ejecuta:</p>
+        <div class="code-block terminal-block">
+          <div class="code-header">
+            <span class="code-filename">Terminal / CMD</span>
+          </div>
+          <pre><code><span class="prompt">$</span> python programa.py</code></pre>
+        </div>
+        <div class="output-preview">
+          <div class="output-label">📤 Salida esperada en pantalla:</div>
+          <pre class="output-text">📅 Fecha actual: 11/03/2026
+🕐 Hora actual:  14:35:07
+
+👤 ¿Cuál es tu nombre? <span class="cursor-blink">|</span>
+<span class="output-typed">María
+
+✅ ¡Hola, María! Tu nombre fue guardado en 'usuario.txt'.</span></pre>
+        </div>
+        <div class="tip">
+          <span class="tip-label">📁 Resultado</span>
+          Se creará un archivo <code>usuario.txt</code> en la misma carpeta con el nombre y la fecha del registro.
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Tutorial creado para GitHub Pages · Python 3.x · <a href="https://docs.python.org/3/" target="_blank">Documentación oficial →</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
